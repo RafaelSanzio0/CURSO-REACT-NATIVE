@@ -14,6 +14,8 @@ import Membro from './components/relacao/Membro'
 import UsuarioLogado from './components/usuarioLogado'
 import ListaProdutos from './components/produtos/ListaProdutos'
 import ListaProdutosV2 from './components/produtos/ListaProdutosV2'
+import DigiteSeuNome from './components/DigiteSeuNome'
+import Quadrado from './components/layout/Quadrado'
 
 
 export default () => (
@@ -43,8 +45,12 @@ export default () => (
         </Familia>
         <UsuarioLogado  usuario={{nome: 'Rafa', email: 'rafa@gmail.com'}}/>
         <UsuarioLogado  usuario={{nome: 'bebe'}}/>
-        <ListaProdutos />*/}
-        <ListaProdutosV2 />
+        <ListaProdutos />
+        <ListaProdutosV2 /
+        <DigiteSeuNome /> >*/}
+        <Quadrado />
+        <Quadrado  cor='#00F'/>
+        <Quadrado  cor='#0F0'/>
 
     </SafeAreaView>
 )
