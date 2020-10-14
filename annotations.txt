@@ -1,0 +1,4 @@
+#01 --> Propriedades são somente leitura (os famosos props)
+#02 --> Usando React.Fragment é possivel retornar mais de um componente (2 texts envolvido no react fragment)
+#03 --> comunicação direta (Pai instancia um componente de Filho e tem acesso a suas props)
+#04 --> com Plataform.OS é possivel diferenciar se estou no android ou ios
