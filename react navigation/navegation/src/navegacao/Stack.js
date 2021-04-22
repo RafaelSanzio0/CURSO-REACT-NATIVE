@@ -4,10 +4,10 @@ stack.navigation indica que o tipo de navegacao utilizada vai ser o stack e
 stack.screen dita as telas
 */
 import React from 'react'
-import { createStackNavigator }from '@react-navigation/stack'
-import TelaA from '../components/TelaA'
-import TelaB from '../components/TelaB'
-import TelaC from '../components/TelaC'
+import { createStackNavigator } from '@react-navigation/stack'
+import TelaA from '../views/TelaA'
+import TelaB from '../views/TelaB'
+import TelaC from '../views/TelaC'
 import PassoStack from '../components/PassoStack'
 
 const Stack = createStackNavigator ()

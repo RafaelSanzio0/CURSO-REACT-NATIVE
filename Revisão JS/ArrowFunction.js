@@ -2,7 +2,7 @@ let dobro = function (a){ // função normal
     return 2 * a
 }
 
-dobro = (a) => { // a mesma função como arrow function
+dobro = a => { // a mesma função como arrow function
     return 2 * a
 }
 
@@ -13,10 +13,10 @@ console.log(dobro(Math.PI))
 
 
 let ola = function () {
-    return 'olá'
+    return parseInt(Math.random()*101)
 }
 
-ola = () => 'olá' // exemplo de arrow function sem parametro
-ola = _ => 'olá' // com parametro mas pode ser chamado sem passar nada
+ola = () => parseInt(Math.random()*101) // exemplo de arrow function sem parametro
+ola = _ => parseInt(Math.random()*101) // com parametro mas pode ser chamado sem passar nada
 
 console.log(ola())

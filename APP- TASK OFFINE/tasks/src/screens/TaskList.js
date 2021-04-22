@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, StyleSheet } from 'react-native'
+import { View, Text, ImageBackground, StyleSheet, FlatList } from 'react-native'
 
 import commonStyles from '../commonStyles.js'
 import todayImage from '../../assets/imgs/today.jpg'
@@ -7,10 +7,43 @@ import todayImage from '../../assets/imgs/today.jpg'
 import moment from 'moment'
 import 'moment/locale/pt-br'
 
-import Task from '../components/Task.js'
-
+import Task from '../components/Task.js' // comunicacao direta acontecendo aqui, pois o pai(tasklist) conhece o filho(task)
 
 export default class TaskList extends Component {
+    state = {
+        tasks: [
+        {
+            id: Math.random(),
+            desc: 'Ler Livro de React Livre',
+            estimeAt: new Date(),
+            doneAt: null
+        },  {
+            id: Math.random(),
+            desc: 'Comprar Livro de React Livre',
+            estimeAt: new Date(),
+            doneAt: new Date()
+        },
+    ]
+}       
+    // a logica do toogletask fica aqui pois é onde se encontra o estado das task
+    toogleTask = taskId => { // funcao responsavel por dizer se uma tarefa esta done ou pendente
+        const task = [...this.state.tasks] //cria copia do array
+        task.forEach(task => {
+            if (taskId == task){
+                task.doneAt = task.doneAt ? null : new Date() // se a task.doneAT tiver done eu n faco nada senao eu coloco uma data nova no momento que ele foi clicado
+            }
+        })
+        this.setState({task: task}) // como temo novo array ai em cima nos passamos o novo estado dele(array: nome do atributo definido dentro do state )
+    }
+
+    // com o render item eu pego esses objetos ai de cima e renderizo para um objeto JSX
+    // como os atributos sao os mesmos que espero receber em task eu consigo pegar os atributos e faze um sprad
+    // jogando dentro da task {...item}
+
+    //data={this.state.tasks} = LISTA D OBJETOS PUROS NADA DE KEY E VALUE
+    // keyExtractor={item => `${item.id}` = OBTENDO O ID DE FORMA CORRETA DE CADA ELEMENTO
+    // renderItem={({item}) => <Task {...item} explicacao acima
+
     render() {
         const today = moment().locale('pt-br').format('ddd, D [de] MMMM [de] Y')
         return (
@@ -22,22 +55,9 @@ export default class TaskList extends Component {
                     </View>
                 </ImageBackground>
                 <View style={r_styles.taskContainer}>
-                    <Task desc="Comprar Livro" estimateAt={new Date()} doneAt={new Date()}></Task>
-                    <Task desc="Ler Livro" estimateAt={new Date()} doneAt={null}></Task>
-                    <Task desc="Comprar Livro" estimateAt={new Date()} doneAt={new Date()}></Task>
-                    <Task desc="Ler Livro" estimateAt={new Date()} doneAt={null}></Task>
-                    <Task desc="Comprar Livro" estimateAt={new Date()} doneAt={new Date()}></Task>
-                    <Task desc="Ler Livro" estimateAt={new Date()} doneAt={null}></Task>
-                    <Task desc="Comprar Livro" estimateAt={new Date()} doneAt={new Date()}></Task>
-                    <Task desc="Ler Livro" estimateAt={new Date()} doneAt={null}></Task>
-                    <Task desc="Comprar Livro" estimateAt={new Date()} doneAt={new Date()}></Task>
-                    <Task desc="Ler Livro" estimateAt={new Date()} doneAt={null}></Task>
-                    <Task desc="Comprar Livro" estimateAt={new Date()} doneAt={new Date()}></Task>
-                    <Task desc="Ler Livro" estimateAt={new Date()} doneAt={null}></Task>
-                    <Task desc="Comprar Livro" estimateAt={new Date()} doneAt={new Date()}></Task>
-                    <Task desc="Ler Livro" estimateAt={new Date()} doneAt={null}></Task>
-                    <Task desc="Comprar Livro" estimateAt={new Date()} doneAt={new Date()}></Task>
-                    <Task desc="Ler Livro" estimateAt={new Date()} doneAt={null}></Task>
+                    <FlatList data={this.state.tasks}
+                        keyExtractor={item => `${item.id}`}
+                        renderItem={({item}) => <Task {...item} toggleTaskProps={this.toogleTask} />}/>
                 </View>
             </View>
         )

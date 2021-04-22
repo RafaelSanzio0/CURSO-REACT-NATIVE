@@ -1,5 +1,0 @@
-npx react-native init <project_name> -------> cria um novo projeto
-emulator -list-avds -------> mostra uma lista de devices disponiveis
-emulator -avd <emulator_name> -------> inicializa o emulador
-npx react-native run-android -------> inicializa o emulador fazendo o deploy da app
-npx react-native log-android -------> abre os logs

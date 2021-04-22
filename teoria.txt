@@ -1,5 +1,0 @@
-SAFEAREAVIEW
-
-O objetivo SafeAreaViewé renderizar conteúdo dentro dos limites da área segura de um dispositivo. Atualmente, é aplicável apenas a dispositivos iOS com iOS versão 11 ou posterior.
-SafeAreaViewrenderiza o conteúdo aninhado e aplica automaticamente o preenchimento para refletir a parte da visualização que não é coberta pelas barras de navegação, barras de guia, 
-barras de ferramentas e outras visualizações ancestrais. Além disso, e mais importante, os preenchimentos da Área de segurança refletem a limitação física da tela, como cantos arredondados ou entalhes da câmera (ou seja, a área da caixa do sensor no iPhone X).

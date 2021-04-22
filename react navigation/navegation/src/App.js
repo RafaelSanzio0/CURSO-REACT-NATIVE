@@ -1,8 +1,8 @@
 import React from 'react'
 import { SafeAreaView, Text } from 'react-native'
-import TelaA from './components/TelaA'
-import TelaB from './components/TelaB'
-import TelaC from './components/TelaC'
+import TelaA from './views/TelaA'
+import TelaB from './views/TelaB'
+import TelaC from './views/TelaC'
 
 export default props => (
     <SafeAreaView style={{flex: 1}}> 

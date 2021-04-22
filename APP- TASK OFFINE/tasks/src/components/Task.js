@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, StyleSheet} from 'react-native'
+import React from 'react' // imr
+import { View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native' // imrn
 import Icon from 'react-native-vector-icons/FontAwesome'
 import commonStyles from '../commonStyles'
 import moment from 'moment'
@@ -7,6 +7,11 @@ import 'moment/locale/pt-br'
 
 //export default props indica que é um componente funcional
 
+//utilizamos a tecnica de comunicacao indireta passando uma funcao como propriedade
+//pra tag filha e ela é chamada quando determinado evento acontecer uma func callback para mudar status da app
+// a ideia central e passar params de pai pra filho (taskList pra Task)
+
+//RESUMINDO UMA COMUNICACAO INDIRETA É QUANDO VC PASSA VIA PROPS UMA FUNCAO PRO FILHO E O FILHO CHAMA O PAI ATRAVES DESSA FUNC CALLBACK
 
 export default props => {
 
@@ -14,11 +19,14 @@ export default props => {
     const date = props.doneAt ? props.doneAt : props.estimateAt
     const formattedDate = moment(date).locale('pt-br').format('ddd, D [de] MMMM [de] Y')
 
+    // recebendo fucnao como callback na onpress via props que é o toogle / aqui nos passamos o ID do elemento clicado para o pai
     return (
         <View style={r_styles.container}>
-            <View style={r_styles.checkContainer}> 
-                {getCheckView(props.doneAt)}
-            </View>
+            <TouchableWithoutFeedback onPress={() => props.toggleTaskProps(props.id)}> 
+                <View style={r_styles.checkContainer}> 
+                    {getCheckView(props.doneAt)}
+                </View>
+            </TouchableWithoutFeedback>
             <View>
                 <Text style={[r_styles.desc, doneOrNotStyle]}>{props.desc}</Text>
                 <Text style={r_styles.date}>{formattedDate}</Text>
@@ -83,4 +91,5 @@ const r_styles = StyleSheet.create({
 
 })
 //TODA VIEW É UMA FLEX CONTAINER QUE TEM UMA FLEX ITEM AI O JUSTIFYCONTENT E O ALINGITENS FAZ ALINHAR OS FLEX INTENS DENTRO
-//DE UM CONTAINER DO TIPO FLEX
+//DE UM CONTAINER DO TIPO row
+
