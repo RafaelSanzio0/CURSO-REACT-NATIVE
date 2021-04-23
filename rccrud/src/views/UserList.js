@@ -1,10 +1,13 @@
 import React from 'react'
 import { View, Text, FlatList, Alert } from 'react-native'
 import { ListItem, Avatar, Button, Icon } from 'react-native-elements'
-import users from '../data/userMock'
 
 export default props => {
     //console.warn(Object.keys(props)) //podemos debugar com o warn, aqui exibimos as props da nossa screen com um alerta
+
+    // const { state } poderia ser assim e usar como state.user ao inves do exemplo da linha 10
+    //console.warn(Object.keys(UsersContextUsed.state))
+    const UsersContextUsed = useContext(UsersContextInitialize)
 
     function getUserItem({item}) { // pega um usuario que esta guardado na variavel data
         return ( // # 2
@@ -50,7 +53,7 @@ export default props => {
     return ( // # 1
         <View>
             <FlatList
-                data={users} // carrega meus usuarios
+                data={UsersContextUsed.state.user} // carrega meus usuarios
                 keyExtractor={users => users.id.toString()} // add uma chave pra kd user
                 renderItem={getUserItem} //renderiza na tela os usuarios
             />
