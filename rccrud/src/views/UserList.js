@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, FlatList, Alert } from 'react-native'
 import { ListItem, Avatar, Button, Icon } from 'react-native-elements'
+import UsersContextInitialize from '../context/UserContext'
 
 export default props => {
     //console.warn(Object.keys(props)) //podemos debugar com o warn, aqui exibimos as props da nossa screen com um alerta
 
-    // const { state } poderia ser assim e usar como state.user ao inves do exemplo da linha 10
+    // const { state } poderia ser assim e usar como state.user ao inves do exemplo da linha 11
     //console.warn(Object.keys(UsersContextUsed.state))
     const UsersContextUsed = useContext(UsersContextInitialize)
 
@@ -53,7 +54,7 @@ export default props => {
     return ( // # 1
         <View>
             <FlatList
-                data={UsersContextUsed.state.user} // carrega meus usuarios
+                data={UsersContextUsed.state.users} // carrega meus usuarios
                 keyExtractor={users => users.id.toString()} // add uma chave pra kd user
                 renderItem={getUserItem} //renderiza na tela os usuarios
             />

@@ -1,15 +1,15 @@
 import React, {useState} from 'react'
-import { Text, TextInput, StyleSheet, Button } from 'react-native'
+import { Text, TextInput, StyleSheet, Button, View } from 'react-native'
 
 export default props => {
     //console.warn(Object.keys(props)) // exibindo as props da minha tela
-    const [user, setuser] = useState(route.params ? route.params : {}) //se e true os params traz eles pra min, senao traz nada
+    const [user, setuser] = useState(props.route.params ? props.route.params : {}) //se e true os params traz eles pra min, senao traz nada
     return (
-        <View> 
+        <View style={myStyle.form}> 
             <Text>Nome</Text>
             <TextInput
                 style={myStyle.input}
-                onChangeText={name => setuser({...user, name})}
+                onChangeText={nick => setuser({...user, nick})}
                 placeholder="Informe o nome"
                 value={user.nick}
             />
